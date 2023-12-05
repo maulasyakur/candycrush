@@ -103,6 +103,19 @@ def del_cells(grid, del_pos):
             grid[i][col] = grid[i-1][col]
         grid[0][col] = " "
 
+    for col in range(len(grid[0])):
+        del_col = True
+        for row in range(len(grid)):
+            if grid[row][col] != " ":
+                del_col = False
+        if del_col == True:
+            for i in range(col, len(grid[0])):
+                for row in range(len(grid)):
+                    if i != len(grid[0]) - 1:
+                        grid[row][i] = grid[row][i+1]
+                    else:
+                        grid[row][i] = " "
+
     return grid
 
 def score_count(grid, del_pos, score):
